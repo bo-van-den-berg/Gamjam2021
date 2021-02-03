@@ -9,13 +9,15 @@ public class HealthManager : MonoBehaviour
 
     public void RecieveDamage(int iDamage)
     {
-        health -= iDamage;
-
-        if (health <= 0)
+        if (health - iDamage <= 0)
         {
             Die();
 
             health = maxHealth;
+        }
+        else
+        {
+            health -= iDamage;
         }
     }
 
