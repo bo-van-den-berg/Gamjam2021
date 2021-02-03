@@ -385,6 +385,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1903443524}
+  - {fileID: 1430795972}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -568,7 +569,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1241675609
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -610,7 +611,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6862745}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -627,13 +628,59 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241675608}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0106481835, y: 0.71314377, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.2595, y: -0.9995, z: 0}
+  m_LocalScale: {x: 16.018568, y: 8.406839, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1430795972}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1430795971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1430795972}
+  - component: {fileID: 1430795973}
+  m_Layer: 0
+  m_Name: FlashManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1430795972
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430795971}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1241675610}
+  m_Father: {fileID: 592083776}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1430795973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430795971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d5733f1ed084541824f57beb5bfa4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeTime: 0.05
+  clickObject: {fileID: 1241675608}
 --- !u!1 &1903443522
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,7 +733,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903443522}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b6bcf9249901244ca02d94ff4ec1524, type: 3}
   m_Name: 
@@ -698,7 +745,7 @@ MonoBehaviour:
   - {x: -3.5, y: 2.5}
   - {x: -4.5, y: 1.5}
   xBounds: {x: -7, y: 7}
-  targetPrefab: {fileID: 5931471420380696433, guid: 8f7ff3bf8f202f044ae18c9000355a33, type: 3}
+  targetPrefab: {fileID: 8653479087145279210, guid: 37accc1803232e247b59ecf14ac45030, type: 3}
   randomSpawnRange: {x: 0, y: 0.5}
   poolName: TargetFake
 --- !u!114 &1903443526
@@ -708,18 +755,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903443522}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0944e0972bc7a540aee2d280a6dedb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetHeights:
-  - 0
-  - -2
-  - -4
-  xBounds: {x: -8, y: 8}
-  targetPrefab: {fileID: 892338870082439589, guid: 77ad0f1a9e81a7c40b20bea6534cd93b, type: 3}
-  randomSpawnRange: {x: 5, y: 10}
+  targetPositions:
+  - {x: 0, y: 5.5}
+  - {x: -1, y: 4.5}
+  - {x: -2, y: 3.5}
+  - {x: -3, y: 2.5}
+  - {x: -4, y: 1.5}
+  xBounds: {x: -7, y: 7}
+  targetPrefab: {fileID: 5931471420380696433, guid: 8f7ff3bf8f202f044ae18c9000355a33, type: 3}
+  randomSpawnRange: {x: 0, y: 1}
   poolName: TargetZombie
 --- !u!1 &1945145465
 GameObject:

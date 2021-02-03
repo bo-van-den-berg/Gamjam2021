@@ -13,7 +13,11 @@ public class TargetMovementAppear : MonoBehaviour, TargetMovement
         iMovement.SetAndApplyKnockbackVelocity(new Vector3(0, disiredDistance, 0));
         iMovement.SetDisiredVelocity(Vector3.zero);
 
-        if (iController.targetMovementIdle != null)
+        if (iController.targetMovementWalk != null)
+        {
+            return iController.targetMovementWalk;
+        }
+        else if (iController.targetMovementIdle != null)
         {
             return iController.targetMovementIdle;
         }
