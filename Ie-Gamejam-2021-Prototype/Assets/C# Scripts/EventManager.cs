@@ -11,6 +11,14 @@ public class EventManager : MonoBehaviour
         current = this;
     }
 
-    public delegate void EmptyDelegate();
-    public event EmptyDelegate targetHit;
+    public delegate void ObjectDelegate(GameObject iObject);
+    public event ObjectDelegate objectDestroyed;
+
+    public void ObjectDestroyed(GameObject iObject)
+    {
+        if (objectDestroyed != null)
+        {
+            objectDestroyed(iObject);
+        }
+    }
 }

@@ -8,8 +8,9 @@ public class Movement : MonoBehaviour
     [SerializeField] private float acceleration;
     [SerializeField] private bool[] blockedAxis = new bool[3];
 
-    private Vector3 disiredVelocity;
-    private Vector3 velocity;
+    [Header("Dev statistics")]
+    [SerializeField] private Vector3 disiredVelocity;
+    [SerializeField] private Vector3 velocity;
 
     private Transform mytrans;
 
@@ -35,6 +36,11 @@ public class Movement : MonoBehaviour
     public void SetDisiredVelocity(Vector3 iDisiredVelocity)
     {
         disiredVelocity = iDisiredVelocity;
+    }
+
+    public void SetVelocity(Vector3 iVelocity)
+    {
+        velocity = iVelocity;
     }
 
     public void CalAndSetDisiredVelocity(Vector3 iDisiredVelocity, float iMovementSpeed)

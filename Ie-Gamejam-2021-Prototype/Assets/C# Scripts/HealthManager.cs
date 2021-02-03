@@ -21,6 +21,6 @@ public class HealthManager : MonoBehaviour
 
     private void Die()
     {
-        gameObject.SetActive(false);
+        EventManager.current.ObjectDestroyed(gameObject);
     }
 }

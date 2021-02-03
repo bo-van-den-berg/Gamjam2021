@@ -5,7 +5,7 @@ using UnityEngine;
 class CreateTargetFake : MonoBehaviour, CreateTarget
 {
     [Header("Positioning")]
-    [SerializeField] private float[] targetHeights;
+    [SerializeField] private Vector2[] targetPositions;
     [SerializeField] private Vector2 xBounds;
 
     [Header("Recourses")]
@@ -46,7 +46,9 @@ class CreateTargetFake : MonoBehaviour, CreateTarget
                 curTarget = Instantiate(targetPrefab);
             }
 
-            curTarget.transform.position = new Vector3(Random.Range(xBounds.x, xBounds.y), targetHeights[Random.Range(0, targetHeights.Length)], 0);
+            Vector2 curTargetPosition = targetPositions[Random.Range(0, targetPositions.Length)];
+
+            curTarget.transform.position = new Vector3(Random.Range(xBounds.x, xBounds.y), curTargetPosition.x, curTargetPosition.y);
 
             iObjectPool.AddObjectToPool(poolName, curTarget);
 

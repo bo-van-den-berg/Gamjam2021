@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface TargetMovement
 {
-    TargetMovement Run(Movement iMovement);
+    TargetMovement Run(Movement iMovement, TargetMovementController iController);
 }
