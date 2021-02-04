@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4089847014624026528}
   - component: {fileID: -8249654496180045176}
   - component: {fileID: -1601263153730880049}
+  - component: {fileID: 8297944922237306214}
   m_Layer: 0
   m_Name: TargetZombie
   m_TagString: Untagged
@@ -204,7 +205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f3edcf28223fd4db5c3eb91dd689b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disiredDistance: 11
+  disiredDistance: 22
+  acceleration: 0.05
 --- !u!114 &-2715883862116476887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55796aacec73454d8a789fc1f3cf4f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTime: 0.5
+  destroyTime: 5
 --- !u!114 &-1601263153730880049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +257,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c7c2374b14b9a48aadd8938a65256a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementTime: 4
-  movementSpeed: 2
+  maxMovementSpeed: 3
+  movementTime: 10
   movementBounds: {x: -7, y: 7}
+--- !u!114 &8297944922237306214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5931471420380696433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf2d3cd9fdbc004ebb3b4224f88a4dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockbackMultiplier: {x: 15, y: 30}
+  fallingVelocity: {x: 0, y: -10}
+  acceleration: 0.25

@@ -7,9 +7,14 @@ public class TargetMovementDisappear : MonoBehaviour, TargetMovement
     [Header("Options")]
     [SerializeField] float disiredDistance = -1;
 
+    public void OnStateChange()
+    {
+
+    }
+
     public TargetMovement Run(Movement iMovement, TargetMovementController iController)
     {
-        iMovement.SetAndApplyKnockbackVelocity(new Vector3(0, disiredDistance, 0));
+        iMovement.SetKnockbackVelocity(new Vector3(0, disiredDistance, 0));
         iMovement.SetDisiredVelocity(new Vector3());
 
         if (iController.targetMovementDied != null)

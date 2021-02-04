@@ -21,6 +21,14 @@ public class HealthManager : MonoBehaviour
         }
     }
 
+    public void InstaKill()
+    {
+        health = 0;
+        health = maxHealth;
+
+        Die();
+    }
+
     private void Die()
     {
         EventManager.current.ObjectDestroyed(gameObject);

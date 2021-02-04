@@ -5,19 +5,28 @@ using UnityEngine;
 public class TargetMovementWalk : MonoBehaviour, TargetMovement
 {
     [Header("Options")]
+    [SerializeField] private float maxMovementSpeed;
     [SerializeField] private float movementTime;
-    [SerializeField] private float movementSpeed;
     [SerializeField] private Vector2 movementBounds;
+
+    private float movementSpeed;
+    private float movementDirection = 1;
 
     private bool attack = false;
 
-    private void OnEnable()
+    public void OnStateChange()
     {
-        movementSpeed = Mathf.Abs(movementSpeed);
+        CancelInvoke("Attack");
+
+        attack = false;
+
+        movementSpeed = 0;
+
+        movementDirection = Mathf.Abs(movementDirection);
 
         if (Random.Range(0, 2) == 1)
         {
-            movementSpeed = -movementSpeed;
+            movementDirection = -movementDirection;
 
             GetComponent<SpriteRenderer>().flipX = false;
         }
@@ -29,11 +38,13 @@ public class TargetMovementWalk : MonoBehaviour, TargetMovement
 
     public TargetMovement Run(Movement iMovement, TargetMovementController iController)
     {
+        movementSpeed += Time.deltaTime * maxMovementSpeed / movementTime;
+
         Invoke("Attack", movementTime);
 
         if (transform.position.x < movementBounds.x)
         {
-            movementSpeed = -movementSpeed;
+            movementDirection = -movementDirection;
             transform.position = new Vector3(movementBounds.x, transform.position.y, transform.position.z);
             transform.position += new Vector3(.1f, 0, 0);
 
@@ -41,7 +52,7 @@ public class TargetMovementWalk : MonoBehaviour, TargetMovement
         }
         else if (transform.position.x > movementBounds.y)
         {
-            movementSpeed = -movementSpeed;
+            movementDirection = -movementDirection;
             transform.position = new Vector3(movementBounds.y, transform.position.y, transform.position.z);
             transform.position -= new Vector3(.1f, 0, 0);
 
@@ -49,7 +60,7 @@ public class TargetMovementWalk : MonoBehaviour, TargetMovement
         }
         else
         {
-            iMovement.SetDisiredVelocity(new Vector3(1 * movementSpeed, 0, 0));
+            iMovement.SetDisiredVelocity(new Vector3(1 * movementDirection * movementSpeed, 0, 0));
         }
 
         if (!attack)
@@ -60,8 +71,7 @@ public class TargetMovementWalk : MonoBehaviour, TargetMovement
         {
             attack = false;
 
-            //return iController.targetMovementIdle;
-            return this;
+            return iController.targetMovementAttack;
         }
     }
 

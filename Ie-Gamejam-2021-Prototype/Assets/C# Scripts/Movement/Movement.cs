@@ -33,6 +33,11 @@ public class Movement : MonoBehaviour
         mytrans.position += velocity * Mathf.Clamp(Time.deltaTime, 0, 1);
     }
 
+    public void SetAcceleration(float iAcceleration)
+    {
+        acceleration = iAcceleration;
+    }
+
     public void SetDisiredVelocity(Vector3 iDisiredVelocity)
     {
         disiredVelocity = iDisiredVelocity;
@@ -48,6 +53,13 @@ public class Movement : MonoBehaviour
         iDisiredVelocity.Scale(GetBlockedAxisVector());
 
         disiredVelocity = iDisiredVelocity.normalized * iMovementSpeed;
+    }
+
+    public void SetKnockbackVelocity(Vector3 iKnockback)
+    {
+        velocity += iKnockback;
+
+        Move();
     }
 
     public void SetAndApplyKnockbackVelocity(Vector3 iKnockback)

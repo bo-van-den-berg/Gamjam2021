@@ -19,6 +19,9 @@ class CreateTargetFake : MonoBehaviour, CreateTarget
 
     private bool newCreated;
 
+    private int maxCreatedCount;
+    private int createdCount;
+
     private void Start()
     {
         SetNewCreated();
@@ -31,13 +34,22 @@ class CreateTargetFake : MonoBehaviour, CreateTarget
         newCreated = true;
     }
 
-    public GameObject Run(ObjectPool iObjectPool)
+    public void OnReset()
     {
+        createdCount = 0;
+    }
+
+    public bool Run(ObjectPool iObjectPool, int iMaxCreatedCount)
+    {
+        maxCreatedCount = iMaxCreatedCount;
+
         GameObject curTarget = null;
 
-        if (newCreated == true)
+        if (newCreated == true && createdCount < maxCreatedCount)
         {
             newCreated = false;
+
+            createdCount++;
 
             curTarget = iObjectPool.GetPoolObject(poolName);
 
@@ -55,6 +67,13 @@ class CreateTargetFake : MonoBehaviour, CreateTarget
             curTarget.SetActive(true);
         }
 
-        return curTarget;
+        if (createdCount >= maxCreatedCount)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

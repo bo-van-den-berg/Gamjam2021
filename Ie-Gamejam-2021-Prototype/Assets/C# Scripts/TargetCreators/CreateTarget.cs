@@ -4,5 +4,7 @@ using UnityEngine;
 
 interface CreateTarget
 {
-    GameObject Run(ObjectPool iObjectPool);
+    bool Run(ObjectPool iObjectPool, int iMaxCreatedCount);
+
+    void OnReset();
 }

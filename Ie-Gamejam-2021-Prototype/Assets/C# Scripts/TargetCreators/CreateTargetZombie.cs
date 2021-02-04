@@ -19,6 +19,8 @@ class CreateTargetZombie : MonoBehaviour, CreateTarget
 
     private bool newCreated;
 
+    private int createdCount;
+
     private void Start()
     {
         SetNewCreated();
@@ -31,30 +33,47 @@ class CreateTargetZombie : MonoBehaviour, CreateTarget
         newCreated = true;
     }
 
-    public GameObject Run(ObjectPool iObjectPool)
+    public void OnReset()
+    {
+        createdCount = 0;
+    }
+
+    public bool Run(ObjectPool iObjectPool, int iMaxCreatedCount)
     {
         GameObject curTarget = null;
 
         if (newCreated == true)
         {
-            newCreated = false;
-
-            curTarget = iObjectPool.GetPoolObject(poolName);
-
-            if (curTarget == null)
+            if (createdCount < iMaxCreatedCount || iMaxCreatedCount == -1)
             {
-                curTarget = Instantiate(targetPrefab);
+                newCreated = false;
+
+                createdCount++;
+
+                curTarget = iObjectPool.GetPoolObject(poolName);
+
+                if (curTarget == null)
+                {
+                    curTarget = Instantiate(targetPrefab);
+                }
+
+                Vector2 curTargetPosition = targetPositions[Random.Range(0, targetPositions.Length)];
+
+                curTarget.transform.position = new Vector3(Random.Range(xBounds.x, xBounds.y), curTargetPosition.x, curTargetPosition.y);
+
+                iObjectPool.AddObjectToPool(poolName, curTarget);
+
+                curTarget.SetActive(true);
             }
-
-            Vector2 curTargetPosition = targetPositions[Random.Range(0, targetPositions.Length)];
-
-            curTarget.transform.position = new Vector3(Random.Range(xBounds.x, xBounds.y), curTargetPosition.x, curTargetPosition.y);
-
-            iObjectPool.AddObjectToPool(poolName, curTarget);
-
-            curTarget.SetActive(true);
         }
 
-        return curTarget;
+        if (createdCount >= iMaxCreatedCount && iMaxCreatedCount != -1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

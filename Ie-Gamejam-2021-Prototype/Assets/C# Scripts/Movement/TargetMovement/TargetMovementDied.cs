@@ -6,10 +6,13 @@ public class TargetMovementDied : MonoBehaviour, TargetMovement
 {
     [SerializeField] private float destroyTime;
 
+    public void OnStateChange()
+    {
+        CancelInvoke("Destroy");
+    }
+
     public TargetMovement Run(Movement iMovement, TargetMovementController iController)
     {
-        iMovement.SetDisiredVelocity(new Vector3());
-
         Invoke("Destroy", destroyTime);
 
         return this;

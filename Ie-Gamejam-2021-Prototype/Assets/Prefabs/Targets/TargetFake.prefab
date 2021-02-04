@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disiredDistance: 11
+  acceleration: 0.05
 --- !u!114 &8072907603059427762
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,12 +9,14 @@ public class TargetMovementController : MonoBehaviour
     public TargetMovement targetMovementAppear;
     public TargetMovement targetMovementWalk;
     public TargetMovement targetMovementIdle;
+    public TargetMovement targetMovementAttack;
     public TargetMovement targetMovementDisappear;
     public TargetMovement targetMovementDied;
 
     private Movement movement;
 
     private TargetMovement currentTargetMovement;
+    private TargetMovement prevTargetMovement;
 
     private bool died = false;
 
@@ -41,18 +43,37 @@ public class TargetMovementController : MonoBehaviour
         {
             died = false;
 
-            if (targetMovementDisappear != null)
+            if (currentTargetMovement != targetMovementDied)
             {
-                currentTargetMovement = targetMovementDisappear;
+                if (targetMovementDisappear != null)
+                {
+                    currentTargetMovement = targetMovementDisappear;
+                }
+                else
+                {
+                    currentTargetMovement = targetMovementDied;
+                }
             }
             else
             {
-                currentTargetMovement = targetMovementDied;
+                currentTargetMovement = targetMovementIdle;
             }
         }
 
         if (currentTargetMovement != null)
         {
+            if (currentTargetMovement != prevTargetMovement)
+            {
+                if (prevTargetMovement != null)
+                {
+                    prevTargetMovement.OnStateChange();
+                }
+
+                currentTargetMovement.OnStateChange();
+
+                prevTargetMovement = currentTargetMovement;
+            }
+
             currentTargetMovement = currentTargetMovement.Run(movement, this);
         }
     }
@@ -62,6 +83,11 @@ public class TargetMovementController : MonoBehaviour
         if (TryGetComponent<TargetMovementAppear>(out TargetMovementAppear iTargetMovementAppear))
         {
             targetMovementAppear = iTargetMovementAppear;
+        }
+
+        if (TryGetComponent<TargetMovementWalk>(out TargetMovementWalk iTargetMovementWalk))
+        {
+            targetMovementWalk = iTargetMovementWalk;
         }
 
         if (TryGetComponent<TargetMovementIdle>(out TargetMovementIdle iTargetMovementIdle))
@@ -74,14 +100,14 @@ public class TargetMovementController : MonoBehaviour
             targetMovementDisappear = iTargetMovementDisappear;
         }
 
+        if (TryGetComponent<TargetMovementAttack>(out TargetMovementAttack iTargetMovementAttack))
+        {
+            targetMovementAttack = iTargetMovementAttack;
+        }
+
         if (TryGetComponent<TargetMovementDied>(out TargetMovementDied iTargetMovementDied))
         {
             targetMovementDied = iTargetMovementDied;
-        }
-
-        if (TryGetComponent<TargetMovementWalk>(out TargetMovementWalk iTargetMovementWalk))
-        {
-            targetMovementWalk = iTargetMovementWalk;
         }
 
         if (TryGetComponent<Movement>(out Movement iMovement))
@@ -94,7 +120,10 @@ public class TargetMovementController : MonoBehaviour
     {
         if (iObject == gameObject)
         {
-            died = true;
+            if (currentTargetMovement == targetMovementIdle || currentTargetMovement == targetMovementWalk || currentTargetMovement == targetMovementDied)
+            {
+                died = true;
+            }
         }
     }
 }
