@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
-    [SerializeField] private int health;
+    [SerializeField] public int health;
     [SerializeField] private int maxHealth;
 
     public void RecieveDamage(int iDamage)
@@ -31,6 +31,6 @@ public class HealthManager : MonoBehaviour
 
     private void Die()
     {
-        EventManager.current.ObjectDestroyed(gameObject);
+        EventManager.current.ObjectDeath(gameObject);
     }
 }

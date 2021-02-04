@@ -17,6 +17,7 @@ public class TargetMovementAppear : MonoBehaviour, TargetMovement
     public TargetMovement Run(Movement iMovement, TargetMovementController iController)
     {
         iMovement.SetAcceleration(acceleration);
+        iMovement.SetVelocity(Vector3.zero);
         iMovement.SetAndApplyKnockbackVelocity(new Vector3(0, disiredDistance, 0));
         iMovement.SetDisiredVelocity(Vector3.zero);
 

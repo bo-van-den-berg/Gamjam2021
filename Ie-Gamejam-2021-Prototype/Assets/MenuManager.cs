@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    [SerializeField] private int sceneIndex;
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(sceneIndex);
         }
     }
 }

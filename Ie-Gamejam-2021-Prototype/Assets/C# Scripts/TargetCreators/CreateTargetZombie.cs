@@ -13,11 +13,14 @@ class CreateTargetZombie : MonoBehaviour, CreateTarget
 
     [Header("Timing")]
     [SerializeField] private Vector2 randomSpawnRange;
+    [SerializeField] private float timeDecreaseRate;
 
     [Header("Options")]
     [SerializeField] public string poolName;
 
     private bool newCreated;
+
+    public float timeDecrease = 1;
 
     private int createdCount;
 
@@ -28,7 +31,9 @@ class CreateTargetZombie : MonoBehaviour, CreateTarget
 
     private void SetNewCreated()
     {
-        Invoke("SetNewCreated", Random.Range(randomSpawnRange.x, randomSpawnRange.y));
+        Invoke("SetNewCreated", Random.Range(randomSpawnRange.x, randomSpawnRange.y) * timeDecrease);
+
+        timeDecrease = timeDecrease - timeDecrease / timeDecreaseRate;
 
         newCreated = true;
     }

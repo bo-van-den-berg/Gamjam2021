@@ -34,7 +34,7 @@ public class TargetMovementController : MonoBehaviour
     {
         GetAllComponents();
 
-        EventManager.current.objectDestroyed += Died;
+        EventManager.current.objectDeath += Died;
     }
 
     void Update()

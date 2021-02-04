@@ -12,13 +12,24 @@ public class EventManager : MonoBehaviour
     }
 
     public delegate void ObjectDelegate(GameObject iObject);
-    public event ObjectDelegate objectDestroyed;
+    public delegate void EmptyDelegate();
 
-    public void ObjectDestroyed(GameObject iObject)
+    public event ObjectDelegate objectDeath;
+    public event EmptyDelegate waveCompleted;
+
+    public void ObjectDeath(GameObject iObject)
     {
-        if (objectDestroyed != null)
+        if (objectDeath != null)
         {
-            objectDestroyed(iObject);
+            objectDeath(iObject);
+        }
+    }
+
+    public void WaveCompleted()
+    {
+        if (waveCompleted != null)
+        {
+            waveCompleted();
         }
     }
 }

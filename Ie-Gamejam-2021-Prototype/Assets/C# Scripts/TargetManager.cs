@@ -32,13 +32,14 @@ public class TargetManager : MonoBehaviour
 
         objectPool = new ObjectPool();
 
-        EventManager.current.objectDestroyed += TargetDestroyed;
+        EventManager.current.objectDeath += TargetDestroyed;
     }
 
     private void SetWaves()
     {
         Waves.Add(new Wave { waveTargetCreator = createTargetFake, waveTargetCount = 1 });
         Waves.Add(new Wave { waveTargetCreator = createTargetFake, waveTargetCount = 5 });
+        Waves.Add(new Wave { waveTargetCreator = createTargetZombie, waveTargetCount = 3 });
         Waves.Add(new Wave { waveTargetCreator = createTargetZombie, waveTargetCount = -1 });
     }
 
@@ -67,6 +68,8 @@ public class TargetManager : MonoBehaviour
 
                 currentCreator = Waves[GetNextWaveIndex()].waveTargetCreator;
                 currentCreator.OnReset();
+
+                EventManager.current.WaveCompleted();
             }
         }
     }
@@ -87,7 +90,5 @@ public class TargetManager : MonoBehaviour
     private void TargetDestroyed(GameObject iObject)
     {
         destroyedCount++;
-
-        Debug.Log(destroyedCount);
     }
 }

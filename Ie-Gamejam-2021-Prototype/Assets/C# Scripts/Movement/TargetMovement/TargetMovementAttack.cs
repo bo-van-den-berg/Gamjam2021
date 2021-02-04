@@ -17,9 +17,13 @@ public class TargetMovementAttack : MonoBehaviour, TargetMovement
 
     public TargetMovement Run(Movement iMovement, TargetMovementController iController)
     {
+        EventManager.current.gameObject.GetComponent<HealthManager>().RecieveDamage(1);
+
         iMovement.SetAcceleration(acceleration);
         iMovement.SetKnockbackVelocity(new Vector3(Random.Range(-1f, 1f) * knockbackMultiplier.x, Random.Range(0, 1f) * knockbackMultiplier.y, 0));
         iMovement.SetDisiredVelocity(fallingVelocity);
+
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
 
         if (iController.targetMovementDied != null)
         {
