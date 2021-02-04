@@ -15,6 +15,7 @@ public class TargetManager : MonoBehaviour
 
     private CreateTarget createTargetFake;
     private CreateTarget createTargetZombie;
+    private CreateTarget createTargetBush;
 
     private CreateTarget currentCreator;
 
@@ -72,6 +73,8 @@ public class TargetManager : MonoBehaviour
                 EventManager.current.WaveCompleted();
             }
         }
+
+        createTargetBush.Run(objectPool, -1);
     }
 
     private void GetAllComponents()
@@ -84,6 +87,11 @@ public class TargetManager : MonoBehaviour
         if (TryGetComponent<CreateTargetZombie>(out CreateTargetZombie iCreateTargetZombie))
         {
             createTargetZombie = iCreateTargetZombie;
+        }
+
+        if (TryGetComponent<CreateTargetBush>(out CreateTargetBush iCreateTargetBush))
+        {
+            createTargetBush = iCreateTargetBush;
         }
     }
 

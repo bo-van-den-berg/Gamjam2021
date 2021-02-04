@@ -22,6 +22,8 @@ public class TargetMovementDied : MonoBehaviour, TargetMovement
     {
         CancelInvoke("Destroy");
 
+
+
         gameObject.SetActive(false);
     }
 }

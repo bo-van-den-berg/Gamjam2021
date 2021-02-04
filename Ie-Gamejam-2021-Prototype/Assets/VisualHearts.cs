@@ -10,9 +10,14 @@ public class VisualHearts : MonoBehaviour
 
     void Update()
     {
-        while (hearts.Count > healthManager.health)
+        for (int i = 0; i < 3; i++)
         {
-            Destroy(hearts[hearts.Count - 1]);
+            if (hearts.Count > healthManager.health)
+            {
+                Destroy(hearts[hearts.Count - 1]);
+
+                hearts.RemoveAt(hearts.Count - 1);
+            }
         }
     }
 }

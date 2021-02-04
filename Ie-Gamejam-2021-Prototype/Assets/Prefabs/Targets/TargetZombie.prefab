@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf27797c993555345b127ed6c8ce4e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropTableName: Zombie
 --- !u!114 &7437976852004637712
 MonoBehaviour:
   m_ObjectHideFlags: 0

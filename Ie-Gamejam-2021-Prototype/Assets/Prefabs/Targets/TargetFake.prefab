@@ -11,14 +11,15 @@ GameObject:
   - component: {fileID: 5864460324789697497}
   - component: {fileID: 5730697945353166411}
   - component: {fileID: 2311275501337377182}
+  - component: {fileID: 6393582932258159724}
   - component: {fileID: 6465541179044958876}
   - component: {fileID: 5584045984522706315}
   - component: {fileID: 2067898367596114103}
-  - component: {fileID: 6393582932258159724}
   - component: {fileID: 4964520814584452340}
   - component: {fileID: 8072907603059427762}
   - component: {fileID: 1334625172579667515}
   - component: {fileID: 2865646454843075347}
+  - component: {fileID: -3191276033826427068}
   m_Layer: 0
   m_Name: TargetFake
   m_TagString: Untagged
@@ -126,6 +127,18 @@ PolygonCollider2D:
       - {x: 0.3519387, y: 0.50174254}
       - {x: 0.36857945, y: 0.8839773}
       - {x: 0.33749998, y: 1.0224433}
+--- !u!114 &6393582932258159724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8653479087145279210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fa35e1aaf0083f4db58ebd4f258631a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6465541179044958876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf27797c993555345b127ed6c8ce4e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropTableName: Fake
 --- !u!114 &5584045984522706315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,18 +182,6 @@ MonoBehaviour:
   blockedAxis: 000001
   disiredVelocity: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
---- !u!114 &6393582932258159724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8653479087145279210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fa35e1aaf0083f4db58ebd4f258631a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4964520814584452340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,3 +234,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 0.5
+--- !u!114 &-3191276033826427068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8653479087145279210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 020545e6dd68af74bae2c13c06ddca02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 5730697945353166411}

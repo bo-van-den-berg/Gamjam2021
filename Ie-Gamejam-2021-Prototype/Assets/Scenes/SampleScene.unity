@@ -123,6 +123,60 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &49731543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 49731545}
+  - component: {fileID: 49731544}
+  m_Layer: 0
+  m_Name: Dropper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &49731544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49731543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f87e3f4520dfc441a6ac08daa6f4c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropTablePlant:
+  - {fileID: 6586585222639101408, guid: ac023a3841deb31469b2193fc0206701, type: 3}
+  - {fileID: 6586585222639101408, guid: ac023a3841deb31469b2193fc0206701, type: 3}
+  - {fileID: 609037150593853921, guid: 8b5110c5aff88dd418c57ce428bb7fe9, type: 3}
+  dropTableFake:
+  - {fileID: 609037150593853921, guid: 8b5110c5aff88dd418c57ce428bb7fe9, type: 3}
+  - {fileID: 807635143890291805, guid: 9ff94d75c663973498dbe65b61b556e3, type: 3}
+  - {fileID: 807635143890291805, guid: 9ff94d75c663973498dbe65b61b556e3, type: 3}
+  dropTableZombie:
+  - {fileID: 113444914322837778, guid: 69600b87c98e8924b8f87654ccfa8eee, type: 3}
+  - {fileID: 113444914322837778, guid: 69600b87c98e8924b8f87654ccfa8eee, type: 3}
+--- !u!4 &49731545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49731543}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1721209, y: 0.9000369, z: -11.14588}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &139786628
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,9 +205,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1581408214}
-  - {fileID: 1802157348}
-  - {fileID: 799445058}
-  - {fileID: 1445632870}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -204,6 +255,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -292,10 +344,25 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.96, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1802157348}
+  - {fileID: 799445058}
+  - {fileID: 1445632870}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32b56a8840902f4391a8ff161faa38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &587213572
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,11 +561,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799445057}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.0426607, y: 1.3043922, z: 18.534155}
+  m_LocalPosition: {x: -6, y: 3.21, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 139786629}
-  m_RootOrder: 2
+  m_Father: {fileID: 519420032}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &799445059
 SpriteRenderer:
@@ -965,11 +1032,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445632869}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.0426607, y: 1.3043922, z: 18.534155}
+  m_LocalPosition: {x: -5, y: 3.21, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 139786629}
-  m_RootOrder: 3
+  m_Father: {fileID: 519420032}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1445632871
 SpriteRenderer:
@@ -1097,11 +1164,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802157347}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.0426607, y: 1.3043922, z: 18.534155}
+  m_LocalPosition: {x: -7, y: 3.21, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 139786629}
-  m_RootOrder: 1
+  m_Father: {fileID: 519420032}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1802157349
 SpriteRenderer:
@@ -1166,6 +1233,7 @@ GameObject:
   - component: {fileID: 1903443523}
   - component: {fileID: 1903443525}
   - component: {fileID: 1903443526}
+  - component: {fileID: 1903443527}
   m_Layer: 0
   m_Name: TargetManager
   m_TagString: Untagged
@@ -1244,6 +1312,30 @@ MonoBehaviour:
   randomSpawnRange: {x: 3, y: 5}
   timeDecreaseRate: 1000
   poolName: TargetZombie
+  timeDecrease: 1
+--- !u!114 &1903443527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903443522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30130399f827b8b4093a97d54dd57813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPositions:
+  - {x: -0.5, y: 5.5}
+  - {x: -1.5, y: 4.5}
+  - {x: -2.5, y: 3.5}
+  - {x: -3.5, y: 2.5}
+  - {x: -4.5, y: 1.5}
+  xBounds: {x: -7, y: 7}
+  targetPrefab: {fileID: 5012129009271924185, guid: 1fc9c77b926657a4dbb49d89afc24871, type: 3}
+  randomSpawnRange: {x: 8, y: 16}
+  timeDecreaseRate: 1000000
+  poolName: Bush
   timeDecrease: 1
 --- !u!1 &1945145465
 GameObject:

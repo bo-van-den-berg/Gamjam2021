@@ -9,6 +9,8 @@ public class HealthManager : MonoBehaviour
 
     public void RecieveDamage(int iDamage)
     {
+        EventManager.current.ScreenShake(.05f, 1/16f);
+
         if (health - iDamage <= 0)
         {
             Die();

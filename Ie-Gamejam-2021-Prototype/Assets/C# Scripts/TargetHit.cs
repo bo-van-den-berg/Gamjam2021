@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TargetHit : MonoBehaviour
 {
+    [SerializeField] private string dropTableName;
+
     private HealthManager healthmanager;
 
     private void Awake()
@@ -16,6 +18,8 @@ public class TargetHit : MonoBehaviour
         if (healthmanager != null)
         {
             healthmanager.RecieveDamage(1);
+
+            EventManager.current.DropAtObject(gameObject, dropTableName);
         }
     }
 
